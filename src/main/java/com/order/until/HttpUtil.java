@@ -24,7 +24,6 @@ import org.apache.http.util.EntityUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.alibaba.fastjson.JSONObject;
 
 
 /**
@@ -137,16 +136,16 @@ public class HttpUtil {
         }
         return null;
     }
-    public static void main(String[] args) {
-    	Map<String, Object> params = new HashMap<String, Object>();
-		params.put("seed", SeedEncrypt.encrypt("ZDMLMGQNYWI9NO9YODAZMBQZZZBYZZX9NWVBZWINOT9HZWUOYOB9ZDQYOWQNMGQYYOJYYBYXZZWMNGFXY"));
-//		params.put("addressList", "[]");
-		
-			String addressStr = HttpUtil.post("http://101.132.177.123:3000/api/getAddressList", params);
-			
-			System.out.println(addressStr);
-		
-	}
+//    public static void main(String[] args) {
+//    	Map<String, Object> params = new HashMap<String, Object>();
+//		params.put("seed", SeedEncrypt.encrypt("ZDMLMGQNYWI9NO9YODAZMBQZZZBYZZX9NWVBZWINOT9HZWUOYOB9ZDQYOWQNMGQYYOJYYBYXZZWMNGFXY"));
+////		params.put("addressList", "[]");
+//		
+//			String addressStr = HttpUtil.post("http://101.132.177.123:3000/api/getAddressList", params);
+//			
+//			System.out.println(addressStr);
+//		
+//	}
 
     /**
      * http post请求
@@ -187,40 +186,40 @@ public class HttpUtil {
      * @return
      * @throws IOException
      */
-    public static String send(String url, JSONObject jsonObject, String encoding) throws Exception {
-        String body = "";
-
-        //创建httpclient对象
-        CloseableHttpClient client = HttpClients.createDefault();
-        //创建post方式请求对象
-        HttpPost httpPost = new HttpPost(url);
-        RequestConfig requestConfig = RequestConfig.custom()  
-                .setConnectTimeout(60000).setConnectionRequestTimeout(60000)  
-                .setSocketTimeout(60000).build();  
-        httpPost.setConfig(requestConfig); 
-        //装填参数
-        StringEntity s = new StringEntity(jsonObject.toString(), "utf-8");
-        s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        //设置参数到请求对象中
-        httpPost.setEntity(s);
-
-        //设置header信息
-        //指定报文头【Content-type】、【User-Agent】
-        httpPost.setHeader("Content-type", "application/json");
-        httpPost.setHeader("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
-
-        //执行请求操作，并拿到结果（同步阻塞）
-        CloseableHttpResponse response = client.execute(httpPost);
-        //获取结果实体
-        HttpEntity entity = response.getEntity();
-        if (entity != null) {
-            //按指定编码转换结果实体为String类型
-            body = EntityUtils.toString(entity, encoding);
-        }
-        EntityUtils.consume(entity);
-        //释放链接
-        response.close();
-        return body;
-    }
+//    public static String send(String url, JSONObject jsonObject, String encoding) throws Exception {
+//        String body = "";
+//
+//        //创建httpclient对象
+//        CloseableHttpClient client = HttpClients.createDefault();
+//        //创建post方式请求对象
+//        HttpPost httpPost = new HttpPost(url);
+//        RequestConfig requestConfig = RequestConfig.custom()  
+//                .setConnectTimeout(60000).setConnectionRequestTimeout(60000)  
+//                .setSocketTimeout(60000).build();  
+//        httpPost.setConfig(requestConfig); 
+//        //装填参数
+//        StringEntity s = new StringEntity(jsonObject.toString(), "utf-8");
+//        s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+//        //设置参数到请求对象中
+//        httpPost.setEntity(s);
+//
+//        //设置header信息
+//        //指定报文头【Content-type】、【User-Agent】
+//        httpPost.setHeader("Content-type", "application/json");
+//        httpPost.setHeader("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+//
+//        //执行请求操作，并拿到结果（同步阻塞）
+//        CloseableHttpResponse response = client.execute(httpPost);
+//        //获取结果实体
+//        HttpEntity entity = response.getEntity();
+//        if (entity != null) {
+//            //按指定编码转换结果实体为String类型
+//            body = EntityUtils.toString(entity, encoding);
+//        }
+//        EntityUtils.consume(entity);
+//        //释放链接
+//        response.close();
+//        return body;
+//    }
 
 }
