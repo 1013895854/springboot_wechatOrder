@@ -7,15 +7,12 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
  
 /**
  * <pre>
  *     @author : orange
- *     e-mail : 495314527@qq.com
- *     time   : 2018/8/27 14:49
  *     desc   : swagger配置
  *     version: 1.0
  * </pre>

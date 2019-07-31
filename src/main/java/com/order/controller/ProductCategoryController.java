@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.order.entity.ProductCategoryEntity;
 import com.order.entity.dto.ProductCategoryDto;
 import com.order.service.ProductCategoryService;
+import com.order.until.GsonUtil;
 import com.order.until.R;
 
 import io.swagger.annotations.Api;
@@ -48,6 +49,7 @@ public class ProductCategoryController {
 	@ResponseBody
 	@ApiOperation("新增商品类目")
 	public R saveProductCategory(@RequestBody ProductCategoryDto productCategoryDto) {
+		log.info("参数"+GsonUtil.GsonString(productCategoryDto));
 		ProductCategoryEntity entity =new ProductCategoryEntity();
 		//赋值
 		BeanUtils.copyProperties(productCategoryDto, entity);
