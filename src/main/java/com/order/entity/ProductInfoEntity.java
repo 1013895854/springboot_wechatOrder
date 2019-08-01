@@ -17,7 +17,6 @@ import lombok.ToString;
 @TableName("product_info")
 public class ProductInfoEntity {
 	
-	@TableId(type=IdType.AUTO)
 	private String productId;
 	// 商品名称
 	private String productName;
