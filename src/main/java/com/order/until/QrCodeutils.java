@@ -148,7 +148,7 @@ public class QrCodeutils {
 	    
 	    public static void main(String[] args) {
 	        String content = "http://www.baidu.com";
-	        String logoPath = "D:/temp.jpg";
+	        String logoPath = "D:/01.jpg";
 	        String format = "jpg";
 	        int width = 180;
 	        int height = 220;

@@ -16,7 +16,7 @@ import java.util.Map;
  
 public class QrCodeUtil {
     public static void main(String[] args) {
-        String url = "http://www.baidu.com";
+        String url = "eeeee";
         String path = "D:/";
         String fileName = "temp.jpg";
         createQrCode(url, path, fileName);
