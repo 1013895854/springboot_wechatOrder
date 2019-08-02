@@ -31,8 +31,8 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
     }
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("springboot整合swagger2")
-                .description("springboot整合swagger2")
+        return new ApiInfoBuilder().title("springboot 微信支付")
+                .description("springboot 微信支付")
                 .termsOfServiceUrl("https://blog.csdn.net/weixin_37591536")
                 .version("1.0")
                 .build();
