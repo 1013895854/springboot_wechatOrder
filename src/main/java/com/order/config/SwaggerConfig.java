@@ -32,8 +32,8 @@ public class SwaggerConfig {
     }
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("springboot 微信支付")
-                .description("springboot 微信支付")
-                .termsOfServiceUrl("https://blog.csdn.net/weixin_37591536")
+                .description("点一哈…增加浏览量……")
+                .termsOfServiceUrl("https://blog.csdn.net/bnxf_xv")
                 .version("1.0")
                 .build();
     }

@@ -11,10 +11,14 @@ import lombok.Setter;
 @Getter
 public class ProductCategoryVo {
 	
-	@JsonProperty("name")
+	
+	@JsonProperty(value="name")
     private  String categoryName;
-	@JsonProperty("type")
+	@JsonProperty(value="type")
     private  Integer categoryType;
-	@JsonProperty("foods")
+	@JsonProperty(value="foods")
     private List<ProductInfoVo> foods;
+	
+	
+	
 }

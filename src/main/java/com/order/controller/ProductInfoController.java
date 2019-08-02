@@ -100,7 +100,7 @@ public class ProductInfoController {
 		
 	}
 	
-	@GetMapping("/deleteProductInfoByIds")
+	@PostMapping("/deleteProductInfoByIds")
 	@ResponseBody
 	@ApiOperation("根据id批量删除")
 	public R deleteById(@RequestBody Long[] roleIds){
