@@ -15,8 +15,8 @@ import lombok.ToString;
 @TableName("order_detail")
 public class OrderDetailEntity {
 
-	@TableId(type= IdType.INPUT)
-	private String detailId;
+	@TableId(type= IdType.AUTO)
+	private Integer detailId;
 	// order_id
 	private String orderId;
 	// product_id
