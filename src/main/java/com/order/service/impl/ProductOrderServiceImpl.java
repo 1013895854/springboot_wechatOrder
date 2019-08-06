@@ -30,6 +30,7 @@ import com.order.service.OrderDetailService;
 import com.order.service.OrderMasterService;
 import com.order.service.ProductInfoService;
 import com.order.service.ProductOrderService;
+import com.order.until.GsonUtil;
 import com.order.until.OrderNumber;
 import com.order.until.enums.OrderStatusEnum;
 import com.order.until.enums.PayStatusEnum;
@@ -109,7 +110,7 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		}
 		//创建订单后通知浏览器（websocket）
 		webSocket.sendMessage("有新的订单，准备查收");
-		
+//		webSocket.sendMessage(GsonUtil.GsonString(masterEntity));
 		return orderNumber;
 	}
 	

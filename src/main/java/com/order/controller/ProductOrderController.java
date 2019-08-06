@@ -16,6 +16,7 @@ import com.order.entity.dto.OrderMasterVo;
 import com.order.service.ProductOrderService;
 import com.order.until.GsonUtil;
 import com.order.until.R;
+import com.order.until.ValidatorUtils;
 import com.order.until.exception.BusinessException;
 
 import io.swagger.annotations.Api;
@@ -37,6 +38,7 @@ public class ProductOrderController {
 	public R createOrder(@RequestBody OrderMasterVo orderMasterVo) {
 		try {
 			log.info(GsonUtil.GsonString(orderMasterVo));
+			ValidatorUtils.validateEntity(orderMasterVo);
 			String createOrder = productOrderService.createOrder(orderMasterVo);
 			return R.ok(createOrder);
 		} catch (BusinessException e) {

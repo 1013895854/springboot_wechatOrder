@@ -15,6 +15,8 @@ import com.order.entity.dto.ProductCategoryDto;
 import com.order.service.ProductCategoryService;
 import com.order.until.GsonUtil;
 import com.order.until.R;
+import com.order.until.ValidatorUtils;
+import com.order.until.exception.BusinessException;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -49,15 +51,22 @@ public class ProductCategoryController {
 	@ResponseBody
 	@ApiOperation("新增商品类目")
 	public R saveProductCategory(@RequestBody ProductCategoryDto productCategoryDto) {
-		log.info("参数"+GsonUtil.GsonString(productCategoryDto));
-		ProductCategoryEntity entity =new ProductCategoryEntity();
-		//赋值
-		BeanUtils.copyProperties(productCategoryDto, entity);
-		boolean result = productCategoryService.save(entity);
-		if(!result) {
-			R.error("保存失败");
+		try {
+			log.info("参数"+GsonUtil.GsonString(productCategoryDto));
+			ValidatorUtils.validateEntity(productCategoryDto);
+			ProductCategoryEntity entity =new ProductCategoryEntity();
+			//赋值
+			BeanUtils.copyProperties(productCategoryDto, entity);
+			boolean result = productCategoryService.save(entity);
+			if(!result) {
+				R.error("保存失败");
+			}
+			return R.ok();
+		} catch (BusinessException e) {
+			e.printStackTrace();
+			return R.error(e.getErrorDesc());
 		}
-		return R.ok();
+		
 		
 	}
 }
