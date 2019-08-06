@@ -37,7 +37,7 @@ public class R implements Serializable {
 	private Object data;
 
 	public R() {
-		this.code = 1;
+		this.code = 0;
 		this.msg = "success";
 	}
 	
