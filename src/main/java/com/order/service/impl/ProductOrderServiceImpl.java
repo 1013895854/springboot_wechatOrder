@@ -48,6 +48,9 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 	@Autowired
 	private OrderDetailService orderDetailService;
 	
+	@Autowired
+	private WebSocket webSocket;
+	
 	@Override
 	public String createOrder(OrderMasterVo orderMasterVo) throws BusinessException {
 		//获取购物车内容
@@ -104,6 +107,8 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		if(!save) {
 			new BusinessException("保存商品订单失败");
 		}
+		//创建订单后通知浏览器（websocket）
+		webSocket.sendMessage("有新的订单，准备查收");
 		
 		return orderNumber;
 	}

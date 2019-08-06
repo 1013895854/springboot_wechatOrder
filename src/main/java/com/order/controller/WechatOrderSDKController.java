@@ -27,34 +27,34 @@ public class WechatOrderSDKController {
 	@Value("${wechat.state}")
 	private String state;
 	
-	@Autowired
-	private WxMpService wxMpService;
+//	@Autowired
+//	private WxMpService wxMpService;
 	
 	
-	@GetMapping("/authorize")
-	@ApiOperation("网页授权获取code")
-	public String authorize(@RequestParam(value="redirectUrl") String redirectUrl) {
-		log.info("param----->"+redirectUrl);
-		String authorizationUrl = wxMpService.oauth2buildAuthorizationUrl(redirectUrl, OAuth2Scope.SNSAPI_USERINFO, state);
-		
-		return "redirect:"+authorizationUrl;
-	}
-	
-	@GetMapping("/userInfo")
-	@ApiOperation("网页授权根据code获取openId")
-	public String userInfo(@RequestParam(value="code") String code,@RequestParam(value="state") String redirectUrl) {
-		try {
-			//根据code获取用户信息
-			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
-			//
-			WxMpUser wxMpUser = wxMpService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
-			String openId = wxMpUser.getOpenId();
-			return "redirect:"+redirectUrl+"?openId"+openId;
-		} catch (Exception e) {
-			return "";
-		}
-		
-	}
+//	@GetMapping("/authorize")
+//	@ApiOperation("网页授权获取code")
+//	public String authorize(@RequestParam(value="redirectUrl") String redirectUrl) {
+//		log.info("param----->"+redirectUrl);
+//		String authorizationUrl = wxMpService.oauth2buildAuthorizationUrl(redirectUrl, OAuth2Scope.SNSAPI_USERINFO, state);
+//		
+//		return "redirect:"+authorizationUrl;
+//	}
+//	
+//	@GetMapping("/userInfo")
+//	@ApiOperation("网页授权根据code获取openId")
+//	public String userInfo(@RequestParam(value="code") String code,@RequestParam(value="state") String redirectUrl) {
+//		try {
+//			//根据code获取用户信息
+//			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
+//			//
+//			WxMpUser wxMpUser = wxMpService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
+//			String openId = wxMpUser.getOpenId();
+//			return "redirect:"+redirectUrl+"?openId"+openId;
+//		} catch (Exception e) {
+//			return "";
+//		}
+//		
+//	}
 	
 	
 }
