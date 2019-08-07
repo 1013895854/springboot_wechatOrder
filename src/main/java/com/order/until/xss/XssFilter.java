@@ -20,6 +20,7 @@ public class XssFilter implements Filter {
             throws IOException, ServletException {
 		XssHttpServletRequestWrapper xssRequest = new XssHttpServletRequestWrapper(
 				(HttpServletRequest) request);
+//		System.out.println("------------------>");
 		chain.doFilter(xssRequest, response);
 	}
 
